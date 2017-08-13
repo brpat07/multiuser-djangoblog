@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Post(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=150)
     content = models.TextField()
     # auto_now=True, auto_now_add=False means everytime it get updated or edited it saves the time
     postupdate = models.DateTimeField(auto_now=True, auto_now_add=False)
@@ -14,6 +14,6 @@ class Post(models.Model):
     def __unicode__(self):
         return self.title
 
-    # For python3 
+    # For python3
     def __str__(self):
         return self.title
