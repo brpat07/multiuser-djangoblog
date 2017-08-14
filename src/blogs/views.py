@@ -14,7 +14,10 @@ class blog_read(View):
 
 class blog_list(View):
     def get(self, request, *args, **kwargs):
-        return render(request, "base.html", {})
+        context = {
+            "user" : "abcd"
+        }
+        return render(request, "base.html", context)
 
 class blog_update(View):
     def get(self, request, *args, **kwargs):
