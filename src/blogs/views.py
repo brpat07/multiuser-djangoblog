@@ -10,11 +10,15 @@ class blog_create(View):
 
 class blog_read(View):
     def get(self, request, id, *args, **kwargs):
-        return HttpResponse("<h1>Hello2</h1>")
+        query = get_object_or_404(Post, id=id)
+        context = {
+            "post" : query,
+        }
+        return render(request, "post.html", context)
 
 class blog_list(View):
-    def get(self, request, id, *args, **kwargs):
-        query = get_object_or_404(Post, id=id)
+    def get(self, request, *args, **kwargs):
+        query = Post.objects.all()
         context = {
             "list" : query,
         }

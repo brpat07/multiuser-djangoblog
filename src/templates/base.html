@@ -9,7 +9,12 @@
     <body>
         <div class="container center">
             <header>
-                <h1 class="title-super text-thin">{{ list.title }}</h1>
+                {% for obj in list %}
+                    <a href="/posts/{{ obj.id }}/read"><h1>{{ obj.title }} __ {{ obj.id }}</h1></a>
+                    <h5>added on {{ obj.posttime }}</h5>
+                    <h3>{{ obj.content }}</h3>
+                {% endfor %}
+
             </header>
 
             {% block content %} {% endblock %}
