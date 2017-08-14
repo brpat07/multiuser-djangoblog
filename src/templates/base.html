@@ -10,7 +10,10 @@
         <div class="container center">
             <header>
                 {% for obj in list %}
-                    <a href="/posts/{{ obj.id }}/read"><h1>{{ obj.title }} __ {{ obj.id }}</h1></a>
+                    <!-- <a href="/posts/{{ obj.id }}/read"><h1>{{ obj.title }} __ {{ obj.id }}</h1></a> -->
+                    <!-- So reason behind adding following line instead of above line is,..
+                        when you change the url or route to rleated task you do not need to change the a tag in html-->
+                    <a href='{% url "show_post" id=obj.id%}'><h1>{{ obj.title }} __ {{ obj.id }}</h1></a>
                     <h5>added on {{ obj.posttime }}</h5>
                     <h3>{{ obj.content }}</h3>
                 {% endfor %}
