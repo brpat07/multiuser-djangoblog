@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import View
 
-# Create your views here.
+from .models import Post
 
 class blog_create(View):
     def get(self, request, *args, **kwargs):
@@ -14,8 +14,10 @@ class blog_read(View):
 
 class blog_list(View):
     def get(self, request, *args, **kwargs):
+        query = Post.objects.all()
         context = {
-            "user" : "abcd"
+            "user" : "abcd",
+            "list" : query,
         }
         return render(request, "base.html", context)
 
