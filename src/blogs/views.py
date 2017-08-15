@@ -3,10 +3,25 @@ from django.shortcuts import render, get_object_or_404
 from django.views import View
 
 from .models import Post
+from .forms import PostForm
 
 class blog_create(View):
-    def get(self, request, id, *args, **kwargs):
-        return HttpResponse("<h1>Hello1</h1>")
+    def get(self, request, *args, **kwargs):
+        form = PostForm()
+        context = {
+            "form" : form,
+        }
+        return render(request, "post_create.html", context)
+
+    def post(self, request, *args, **kwargs):
+        form = PostForm(request.POST)
+        if form.is_valid():
+            form_obj = form.save(commit=False)
+            form_obj.save()
+            context = {
+                "post": form_obj
+                }
+            return render(request, "post_create.html", context)
 
 class blog_read(View):
     def get(self, request, id, *args, **kwargs):
