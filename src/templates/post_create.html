@@ -7,15 +7,17 @@
     </head>
 
     <body>
-        <form method="POST"> {% csrf_token %}
+        <form method='POST' action='' enctype='multipart/form-data'> {% csrf_token %}
             <div class="container center">
-                <h1>{{ form.as_p }}</h1>
+                <!-- <h1>{{ form.as_p }}</h1> -->
+                <h1>{{ form.title }}</h1>
+                <h1>{{ form.content }}</h1>
             </div>
             <input type="submit" class="dropbtn button-txt">
-            <h1>{{ post.title }}</h1>
+            <!-- <h1>{{ post.title }}</h1>
             <h5>added on {{ post.posttime }}</h5>
             <h5>updated on {{ post.postupdate }}</h5>
-            <h3>{{ post.content }}</h3>
+            <h3>{{ post.content }}</h3> -->
         </form>
     </body>
 

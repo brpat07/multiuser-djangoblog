@@ -21,7 +21,7 @@ class blog_create(View):
             context = {
                 "post": form_obj
                 }
-            return render(request, "post_create.html", context)
+            return render(request, "post.html", context)
 
 class blog_read(View):
     def get(self, request, id, *args, **kwargs):
@@ -39,9 +39,26 @@ class blog_list(View):
         }
         return render(request, "base.html", context)
 
-class blog_update(View):
+class blog_edit(View):
     def get(self, request, id, *args, **kwargs):
-        return HttpResponse("<h1>Hello4</h1>")
+        instance = get_object_or_404(Post, id=id)
+        form = PostForm(request.POST, instance=instance)
+        context = {
+            "title": instance.title,
+            "instance": instance,
+            "form" : form,
+        }
+        return render(request, "post_create.html", context)
+
+    def post(self, request, id, *args, **kwargs):
+        form = PostForm(request.POST)
+        if form.is_valid():
+            form_obj = form.save(commit=False)
+            form_obj.save()
+            context = {
+                "post": form_obj
+                }
+            return render(request, "post.html", context)
 
 class blog_delete(View):
     def get(self, request, id, *args, **kwargs):
