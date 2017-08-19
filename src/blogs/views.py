@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from django.contrib import messages
 
@@ -72,4 +72,7 @@ class blog_edit(View):
 
 class blog_delete(View):
     def get(self, request, id, *args, **kwargs):
-        return HttpResponse("<h1>Hello5</h1>")
+        query = get_object_or_404(Post, id=id)
+        query.delete()
+        messages.success(request, "blog has been deleted successfully")
+        return redirect("posts:show_blogs")
