@@ -55,8 +55,8 @@ class blog_edit(View):
         return render(request, "post_create.html", context)
 
     def post(self, request, id, *args, **kwargs):
-        instance = get_object_or_404(Post, id=id)
-        form = PostForm(request.POST, instance=instance)
+        query = get_object_or_404(Post, id=id)
+        form = PostForm(request.POST, instance=query)
         if form.is_valid():
             form_obj = form.save(commit=False)
             form_obj.save()
