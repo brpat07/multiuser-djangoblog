@@ -1,0 +1,58 @@
+.error {
+    color: red;
+}
+
+.blog-author-center {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.blog-container {
+    margin-left:20%;
+    margin-right: 20%;
+}
+
+.blog-form-signin {
+    max-width: 900px;
+    padding: 15px;
+    margin: 0 auto;
+    background-color: #2e3033;
+    color: #969494;
+}
+
+.input-blog {
+    width: 30%;
+}
+
+.input-comment {
+    width: 550px;
+}
+
+.text-input-blog {
+    height: 600px;
+}
+
+.edit-button {
+    background-color: #2e3033;
+    color: white;
+    padding: 0px;
+    font-size: 22px;
+    width: 22px;
+    border: none;
+    cursor: pointer;
+    height: 27px;
+}
+
+.edit-button-margin {
+    margin-top: 30px;
+}
+
+.likebutton-margin {
+    margin-top: 20px;
+}
+
+.blog-button {
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding:5px;
+}

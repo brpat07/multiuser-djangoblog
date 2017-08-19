@@ -12,13 +12,18 @@
         </ul>
         {% endif %}
         <form method="post" class="blog-form-signin"> {% csrf_token %}
-            <h1>{{ form.as_p }}</h1>
-            <br>
-            <br>
-            <div class="text-right">
-                <input type="submit" class="dropbtn button-txt">
-            </div>
+            <!-- <h1>{{ form.as_p }}</h1> -->
+            {% for field in form %} {% if "title" in field.label_tag %}
+            <div class="input-blog"> {% else %}
+                <div class="input-blog text-input-blog"> {% endif %} {{ field.errors }} {{ field.label_tag }} <br>{{ field }}
+                </div>
+                <br> {% endfor %}
+                <br>
+                <br>
+                <div class="text-right">
+                    <input type="submit" class="dropbtn button-txt">
+                </div>
         </form>
+        </div>
     </div>
-</div>
-{% endblock %}
+    {% endblock %}
