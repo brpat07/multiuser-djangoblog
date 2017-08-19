@@ -2,20 +2,27 @@
 
 <html>
 
-    <head>
-        <title>Django blogs</title>
-    </head>
+<head>
+    <title>Django blogs</title>
+</head>
 
-    <body>
-        <div class="container center">
-            <header>
-                <h1>{{ post.title }}</h1>
-                <h5>added on {{ post.posttime }}</h5>
-                <h5>updated on {{ post.postupdate }}</h5>
-                <h3>{{ post.content }}</h3>
-            </header>
+<body>
+    <div class="container center">
+        <header>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+            </ul>
+            {% endif %}
+            <h1>{{ post.title }}</h1>
+            <h5>added on {{ post.posttime }}</h5>
+            <h5>updated on {{ post.postupdate }}</h5>
+            <h3>{{ post.content }}</h3>
+        </header>
 
-        </div>
-    </body>
+    </div>
+</body>
 
 </html>

@@ -1,11 +1,11 @@
 from django.conf.urls import url
 from .views import (
-        blog_create,
-        blog_read,
-        blog_list,
-        blog_edit,
-        blog_delete,
-        )
+    blog_create,
+    blog_read,
+    blog_list,
+    blog_edit,
+    blog_delete,
+)
 
 urlpatterns = [
     url(r'^$', blog_list.as_view()),
