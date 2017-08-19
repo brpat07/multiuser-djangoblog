@@ -23,11 +23,8 @@ class blog_create(View):
             messages.success(request, "blog has been added successfully")
             return HttpResponseRedirect(form_obj.get_absolute_url())
         else:
-            context = {
-                "form": form,
-            }
             messages.error(request, "Failed to add the blog")
-            return render(request, "post_create.html", context)
+            return HttpResponseRedirect("create")
 
 
 class blog_read(View):
@@ -63,11 +60,8 @@ class blog_edit(View):
         if form.is_valid():
             form_obj = form.save(commit=False)
             form_obj.save()
-            context = {
-                "post": form_obj
-            }
             messages.success(request, "blog has been edited successfully")
-            return render(request, "post.html", context)
+            return HttpResponseRedirect(form_obj.get_absolute_url())
         else:
             context = {
                 "form": form,
