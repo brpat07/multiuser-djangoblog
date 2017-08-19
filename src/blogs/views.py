@@ -26,9 +26,11 @@ class blog_create(View):
             messages.success(request, "blog has been added successfully")
             return render(request, "post.html", context)
         else:
+            context = {
+                "form": form,
+            }
             messages.error(request, "Failed to add the blog")
-            # return render(request, "post_create.html", context)
-            self.get(id)
+            return render(request, "post_create.html", context)
 
 
 class blog_read(View):
@@ -67,7 +69,14 @@ class blog_edit(View):
             context = {
                 "post": form_obj
             }
+            messages.success(request, "blog has been edited successfully")
             return render(request, "post.html", context)
+        else:
+            context = {
+                "form": form,
+            }
+            messages.error(request, "Failed to edit the blog")
+            return render(request, "post_create.html", context)
 
 
 class blog_delete(View):
