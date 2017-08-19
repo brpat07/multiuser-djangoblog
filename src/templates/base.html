@@ -3,22 +3,32 @@
 <html>
 
 <head>
-    <title>Django blogs</title>
+    <title>Full-stack</title>
+
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="/static/css/blogstyle.css" type="text/css" />
+
 </head>
 
 <body>
     <div class="container center">
         <header>
-            {% for obj in list %}
-            <!-- <a href="/posts/{{ obj.id }}/read"><h1>{{ obj.title }} __ {{ obj.id }}</h1></a> -->
-            <!-- So reason behind adding 'url 'posts:show_post' id=obj.id' instead of "/posts/{{ obj.id }}/read" in <a> tag is,..
-                        when you change the url or route to the current route of the task, you do not need to change the a tag in html -->
-            <a href="{% url 'posts:show_post' id=obj.id %}">
-                <h1>{{ obj.title }} __ {{ obj.id }}</h1>
-            </a>
-            <h5>added on {{ obj.posttime }}</h5>
-            <h3>{{ obj.content }}</h3> {% endfor %}
-
+            <div class="row heady title-header main-text">
+                <div class="col-md-6">
+                    <div>
+                        <h1 class="font-giant"><a href="/" style="text-decoration:none">&beta;</a><h1>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-right text-uppercase">
+                        <div>
+                            <h1 class="title-super text-thin">Blog Time</h1>
+                    </div>
+                    <div>
+                        {% block header %} {% endblock %}
+                    </div>
+                </div>
+            </div>
         </header>
 
         {% block content %} {% endblock %}

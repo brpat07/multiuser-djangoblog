@@ -42,7 +42,7 @@ class blog_list(View):
         context = {
             "list": query,
         }
-        return render(request, "base.html", context)
+        return render(request, "blogs.html", context)
 
 
 class blog_edit(View):

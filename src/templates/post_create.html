@@ -1,29 +1,24 @@
-<!DOCTYPE html>
-
-<html>
-
-<head>
-    <title>Django blogs</title>
-</head>
-
-<body>
-    <form method='POST' action='' enctype='multipart/form-data'> {% csrf_token %}
-        <div class="container center">
-            {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-                    {% endfor %}
-            </ul>
-            {% endif %}
+{% extends "base2.html" %} {% block body %}
+<br>
+<br>
+<br>
+<div class="container center">
+    <div class="blog-container">
+        <h2 class="blog-form-signin">New Blog</h2> {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+        </ul>
+        {% endif %}
+        <form method="post" class="blog-form-signin"> {% csrf_token %}
             <h1>{{ form.as_p }}</h1>
-        </div>
-        <input type="submit" class="dropbtn button-txt">
-        <!-- <h1>{{ post.title }}</h1>
-            <h5>added on {{ post.posttime }}</h5>
-            <h5>updated on {{ post.postupdate }}</h5>
-            <h3>{{ post.content }}</h3> -->
-    </form>
-</body>
-
-</html>
+            <br>
+            <br>
+            <div class="text-right">
+                <input type="submit" class="dropbtn button-txt">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

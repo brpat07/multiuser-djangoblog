@@ -1,0 +1,22 @@
+{% extends "base2.html" %} {% block body %}
+<div class="text-center">
+    <h3><b>Welcome to the world of blog</b></h3>
+</div>
+
+
+<div class="container center">
+    <div class="blog-container">{% for obj in list %}
+        <div class="row">
+            <div class="col-md-7">
+                <h3>
+                    <a href="{% url 'posts:show_post' id=obj.id %}">{{ obj.title }}</a>
+                </h3>
+            </div>
+        </div>
+        <div> (added on {{ obj.posttime }})
+        </div>
+
+        <p> <br>&nbsp;&nbsp;&nbsp;&nbsp;{{ obj.content }}</p>
+        <br><br> {% endfor %}
+    </div>
+</div> {% endblock %}
