@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.views import View
 from django.contrib import messages
@@ -20,11 +20,8 @@ class blog_create(View):
         if form.is_valid():
             form_obj = form.save(commit=False)
             form_obj.save()
-            context = {
-                "post": form_obj
-            }
             messages.success(request, "blog has been added successfully")
-            return render(request, "post.html", context)
+            return HttpResponseRedirect(form_obj.get_absolute_url())
         else:
             context = {
                 "form": form,
