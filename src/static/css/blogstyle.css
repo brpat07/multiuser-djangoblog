@@ -21,7 +21,7 @@
 }
 
 .input-blog {
-    width: 30%;
+    width: 500px;
 }
 
 .input-comment {
@@ -29,7 +29,7 @@
 }
 
 .text-input-blog {
-    height: 600px;
+    height: 200px;
 }
 
 .edit-button {
@@ -55,4 +55,8 @@
     -moz-border-radius: 5px;
     border-radius: 5px;
     padding:5px;
+}
+
+.grey-text {
+    color: grey;
 }

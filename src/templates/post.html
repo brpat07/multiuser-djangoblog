@@ -9,8 +9,13 @@
         </ul>
         {% endif %}
         <h1>{{ post.title }}</h1>
-        <h5>added on {{ post.posttime }}</h5>
-        <h5>updated on {{ post.postupdate }}</h5>
+        <div class="grey-text">
+            <p>
+                <!-- (added on {{ post.posttime }}) -->
+                (updated on {{ post.postupdate }})
+            </p>
+        </div>
+        <hr>
         <h3>{{ post.content }}</h3>
     </div>
 </div>
