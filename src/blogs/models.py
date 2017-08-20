@@ -6,9 +6,14 @@ from django.core.urlresolvers import reverse
 # Create your models here.
 
 
+def upload_path(obj, file_name):
+    return "%s/%s" % (obj.id, file_name)
+
+
 class Post(models.Model):
     title = models.CharField(max_length=150)
-    image = models.FileField(null=True, blank=True)
+    # image = models.FileField(null=True, blank=True)
+    image = models.ImageField(upload_to=upload_path, null=True, blank=True)
     content = models.TextField()
     # auto_now=True, auto_now_add=False means everytime it get updated or edited it saves the time
     postupdate = models.DateTimeField(auto_now=True, auto_now_add=False)
