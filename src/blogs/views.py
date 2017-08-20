@@ -46,6 +46,14 @@ class blog_list(View):
         }
         return render(request, "blogs.html", context)
 
+class blog_recent(View):
+    def get(self, request, *args, **kwargs):
+        query = Post.objects.all().order_by("-postupdate")[:10]
+        context = {
+            "list": query,
+        }
+        return render(request, "blogs.html", context)
+
 
 class blog_edit(View):
     def get(self, request, id, *args, **kwargs):
