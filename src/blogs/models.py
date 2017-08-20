@@ -8,6 +8,7 @@ from django.core.urlresolvers import reverse
 
 class Post(models.Model):
     title = models.CharField(max_length=150)
+    image = models.FileField(null=True, blank=True)
     content = models.TextField()
     # auto_now=True, auto_now_add=False means everytime it get updated or edited it saves the time
     postupdate = models.DateTimeField(auto_now=True, auto_now_add=False)
