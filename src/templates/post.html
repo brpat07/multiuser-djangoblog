@@ -12,11 +12,11 @@
         <div class="grey-text">
             <p>
                 <!-- (added on {{ post.posttime }}) -->
-                (updated on {{ post.postupdate }})
+                (updated on {{ post.postupdate|timesince }})
             </p>
         </div>
         <hr>
-        <h3>{{ post.content }}</h3>
+        <p>{{ post.content|linebreaks }}</p>
     </div>
 </div>
 {% endblock %}

@@ -5,9 +5,9 @@
 
 
 <div class="container center">
-    <div class="blog-container verticalLine">{% for obj in list %}
+    <div class="blog-container">{% for obj in list %}
         <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-7 ">
                 <h3>
                     <a href="{% url 'posts:show_post' id=obj.id %}">{{ obj.title }}</a>
                 </h3>

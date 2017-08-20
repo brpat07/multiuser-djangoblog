@@ -20,10 +20,12 @@ class blog_create(View):
         if form.is_valid():
             form_obj = form.save(commit=False)
             form_obj.save()
-            messages.success(request, "blog has been added successfully")
+            messages.success(request, "blog has been added successfully",
+                            extra_tags='alert alert-success')
             return HttpResponseRedirect(form_obj.get_absolute_url())
         else:
-            messages.error(request, "Failed to add the blog")
+            messages.error(request, "Failed to add the blog",
+                            extra_tags='alert alert-danger')
             return HttpResponseRedirect("create")
 
 
@@ -38,7 +40,7 @@ class blog_read(View):
 
 class blog_list(View):
     def get(self, request, *args, **kwargs):
-        query = Post.objects.all()
+        query = Post.objects.all().order_by("-postupdate")
         context = {
             "list": query,
         }
@@ -60,13 +62,15 @@ class blog_edit(View):
         if form.is_valid():
             form_obj = form.save(commit=False)
             form_obj.save()
-            messages.success(request, "blog has been edited successfully")
+            messages.success(request, "blog has been edited successfully",
+                            extra_tags='alert alert-success')
             return HttpResponseRedirect(form_obj.get_absolute_url())
         else:
             context = {
                 "form": form,
             }
-            messages.error(request, "Failed to edit the blog")
+            messages.error(request, "Failed to edit the blog",
+                            extra_tags='alert alert-danger')
             return render(request, "post_create.html", context)
 
 
@@ -74,5 +78,6 @@ class blog_delete(View):
     def get(self, request, id, *args, **kwargs):
         query = get_object_or_404(Post, id=id)
         query.delete()
-        messages.success(request, "blog has been deleted successfully")
+        messages.success(request, "blog has been deleted successfully",
+                        extra_tags='alert alert-success')
         return redirect("posts:show_blogs")
