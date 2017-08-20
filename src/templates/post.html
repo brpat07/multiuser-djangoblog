@@ -9,13 +9,18 @@
         </ul>
         {% endif %}
         <h1>{{ post.title }}</h1>
+        <hr>
+        {% if post.image %}
+        <img src="{{ post.image.url }}" class="img-responsive" />
+        <hr>
+        {% endif %}
+        <br>
         <div class="grey-text">
             <p>
                 <!-- (added on {{ post.posttime }}) -->
-                (updated on {{ post.postupdate|timesince }})
+                (updated {{ post.postupdate|timesince }} ago)
             </p>
         </div>
-        <hr>
         <p>{{ post.content|linebreaks }}</p>
     </div>
 </div>

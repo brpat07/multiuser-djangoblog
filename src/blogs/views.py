@@ -16,16 +16,16 @@ class blog_create(View):
         return render(request, "post_create.html", context)
 
     def post(self, request, *args, **kwargs):
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             form_obj = form.save(commit=False)
             form_obj.save()
             messages.success(request, "blog has been added successfully",
-                            extra_tags='alert alert-success')
+                             extra_tags='alert alert-success')
             return HttpResponseRedirect(form_obj.get_absolute_url())
         else:
             messages.error(request, "Failed to add the blog",
-                            extra_tags='alert alert-danger')
+                           extra_tags='alert alert-danger')
             return HttpResponseRedirect("create")
 
 
@@ -45,6 +45,7 @@ class blog_list(View):
             "list": query,
         }
         return render(request, "blogs.html", context)
+
 
 class blog_recent(View):
     def get(self, request, *args, **kwargs):
@@ -66,19 +67,19 @@ class blog_edit(View):
 
     def post(self, request, id, *args, **kwargs):
         query = get_object_or_404(Post, id=id)
-        form = PostForm(request.POST, instance=query)
+        form = PostForm(request.POST, request.FILES, instance=query)
         if form.is_valid():
             form_obj = form.save(commit=False)
             form_obj.save()
             messages.success(request, "blog has been edited successfully",
-                            extra_tags='alert alert-success')
+                             extra_tags='alert alert-success')
             return HttpResponseRedirect(form_obj.get_absolute_url())
         else:
             context = {
                 "form": form,
             }
             messages.error(request, "Failed to edit the blog",
-                            extra_tags='alert alert-danger')
+                           extra_tags='alert alert-danger')
             return render(request, "post_create.html", context)
 
 
@@ -87,5 +88,5 @@ class blog_delete(View):
         query = get_object_or_404(Post, id=id)
         query.delete()
         messages.success(request, "blog has been deleted successfully",
-                        extra_tags='alert alert-success')
+                         extra_tags='alert alert-success')
         return redirect("posts:show_blogs")
