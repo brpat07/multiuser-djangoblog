@@ -123,3 +123,7 @@ hr {
     width: 100%;
     background-color: #f7f7f7;
 }
+
+.pull-right {
+    margin: 0 1%;
+}

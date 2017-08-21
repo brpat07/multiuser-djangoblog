@@ -14,6 +14,6 @@ urlpatterns = [
     url(r'^create$', blog_create.as_view(), name="create_post"),
     url(r'^(?P<id>\d+)/$', blog_read.as_view(), name="show_post"),
     url(r'^(?P<id>\d+)/read$', blog_read.as_view()),
-    url(r'^(?P<id>\d+)/edit$', blog_edit.as_view()),
-    url(r'^(?P<id>\d+)/delete$', blog_delete.as_view()),
+    url(r'^(?P<id>\d+)/edit$', blog_edit.as_view(), name="edit_post"),
+    url(r'^(?P<id>\d+)/delete$', blog_delete.as_view(), name="edit_delete"),
 ]

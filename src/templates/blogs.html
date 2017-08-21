@@ -5,7 +5,15 @@
 
 
 <div class="container center">
-    <div class="blog-container">{% for obj in list %}
+    <div class="blog-container">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+        </ul>
+        {% endif %}
+        {% for obj in list %}
         <div class="row">
             <div class="col-md-7 ">
                 <h3>

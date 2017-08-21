@@ -87,6 +87,9 @@ class blog_delete(View):
     def get(self, request, id, *args, **kwargs):
         query = get_object_or_404(Post, id=id)
         query.delete()
+        context = {
+            "error": "Post has been deleted!"
+        }
         messages.success(request, "blog has been deleted successfully",
                          extra_tags='alert alert-success')
         return redirect("posts:show_blogs")
