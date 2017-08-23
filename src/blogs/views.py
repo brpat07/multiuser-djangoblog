@@ -1,3 +1,5 @@
+from urllib.parse import quote_plus
+
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
@@ -32,8 +34,10 @@ class blog_create(View):
 class blog_read(View):
     def get(self, request, id, *args, **kwargs):
         query = get_object_or_404(Post, id=id)
+        url_string = quote_plus(query.content)
         context = {
             "post": query,
+            "url_string": url_string
         }
         return render(request, "post.html", context)
 
