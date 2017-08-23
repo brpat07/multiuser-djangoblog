@@ -13,6 +13,13 @@
                 {% endfor %}
         </ul>
         {% endif %}
+        <br>
+        <form method="GET" action="">
+            <input type="text" class="input-blog" name="q" placeholder="Search" value="{{ request.GET.q }}"/>
+            <input type="submit" class="pull-right" value="search"/>
+        </form>
+        <br>
+        <br>
         {% for obj in list %}
         <div class="row">
             <div class="col-md-7 ">

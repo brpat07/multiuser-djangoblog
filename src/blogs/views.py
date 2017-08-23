@@ -45,6 +45,9 @@ class blog_read(View):
 class blog_list(View):
     def get(self, request, *args, **kwargs):
         query = Post.objects.all().order_by("-postupdate")
+        queryset = request.GET.get("q")
+        if queryset:
+            query = query.filter(title__icontains=queryset)
         context = {
             "list": query,
         }
@@ -54,6 +57,10 @@ class blog_list(View):
 class blog_recent(View):
     def get(self, request, *args, **kwargs):
         query = Post.objects.all().order_by("-postupdate")[:10]
+        queryset = request.GET.get("q")
+        if queryset:
+            query = Post.objects.all().order_by("-postupdate")
+            query = query.filter(title__icontains=queryset)
         context = {
             "list": query,
         }
