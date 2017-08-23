@@ -127,3 +127,9 @@ hr {
 .pull-right {
     margin: 0 1%;
 }
+
+@media screen and (max-width: 770px) {
+    .content-text {
+        display: none;
+    }
+}
