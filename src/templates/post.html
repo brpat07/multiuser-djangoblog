@@ -15,7 +15,8 @@
         <hr>
         {% endif %}
         <br>
-        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">
+
+        <!-- <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">
             Facebook
         </a>
         <a href='https://plus.google.com/share?url={{ request.build_absolute_uri }}'>
@@ -23,7 +24,7 @@
         </a>
         <a href="http://www.reddit.com/submit?url={{ request.build_absolute_uri }}&title={{ url_string }}.">
             Reddit
-        </a>
+        </a> -->
 
         <div class="grey-text">
             <p>
@@ -32,6 +33,10 @@
             </p>
         </div>
         <p>{{ post.content|linebreaks }}</p>
+        <hr>
+        <div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+        <hr>
+        <div class="fb-comments col-sm-offset-1" data-href="{{ request.build_absolute_uri }}" data-numposts="5"></div>
     </div>
 </div>
 {% endblock %}
