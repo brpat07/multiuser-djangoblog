@@ -101,8 +101,6 @@ class blog_delete(View):
             "del_task": "deleting",
             "del_task_id": id,
         }
-        messages.success(request, "blog has been deleted successfully",
-                         extra_tags='alert alert-success')
         return render(request, "post.html", context)
 
     def post(self, request, id, *args, **kwargs):

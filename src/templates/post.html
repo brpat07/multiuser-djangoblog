@@ -33,7 +33,7 @@
         </script>
         <form method="post">
             <input type="submit" class="dropbtn button-txt" value="delete" /> {% csrf_token %}
-            <a href="{% url 'posts:show_post' id=del_task_id %}" class="dropbtn button-txt">Cancel</a>
+            <a href="{% url 'posts:show_post' id=del_task_id %}" class=" dropbtn button-txt" style="text-decoration:none">Cancel</a>
         </form>
         {% else %}
         {% if messages %}
