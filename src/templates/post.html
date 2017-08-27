@@ -31,6 +31,10 @@
             $("#dialog").dialog("open");
           });
         </script>
+        <form method="post">
+            <input type="submit" class="dropbtn button-txt" value="delete" /> {% csrf_token %}
+            <a href="{% url 'posts:show_post' id=del_task_id %}" class="dropbtn button-txt">Cancel</a>
+        </form>
         {% else %}
         {% if messages %}
         <ul class="messages">
@@ -39,7 +43,7 @@
                 {% endfor %}
         </ul>
         {% endif %}
-        <h1>{{ post.title }} <a href="{% url 'posts:edit_delete' id=post.id %}" class="pull-right"><button class="edit-button button-txt">X</button></a><a href="{% url 'posts:edit_post' id=post.id %}" class="pull-right"><button class="edit-button button-txt">&#9998;</button></a></h1>
+        <h1>{{ post.title }} <a href="{% url 'posts:confirm_delete' id=post.id %}" class="pull-right"><button class="edit-button button-txt">X</button></a><a href="{% url 'posts:edit_post' id=post.id %}" class="pull-right"><button class="edit-button button-txt">&#9998;</button></a></h1>
         <hr>
         {% if post.image %}
         <img src="{{ post.image.url }}" class="img-responsive" />
